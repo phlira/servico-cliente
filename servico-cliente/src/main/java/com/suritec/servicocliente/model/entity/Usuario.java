@@ -7,15 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "usuario", schema= "clientes")
+@Table(name = "usuario")
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,7 +23,7 @@ public class Usuario {
 	@Column @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 	@Column private String nome;
 	@Column	private String login;
-	@Column @JsonIgnore private String senha;
+	@Column private String senha;
 	@Column private String role;
 	
 }

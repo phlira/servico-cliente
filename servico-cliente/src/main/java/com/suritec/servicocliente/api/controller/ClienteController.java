@@ -3,8 +3,6 @@ package com.suritec.servicocliente.api.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -58,7 +56,7 @@ public class ClienteController {
 	
 	@PutMapping("{id}")
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity atualizar(@PathVariable("id") Long id,@Valid @RequestBody ClienteDTO dto) {
+	public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody ClienteDTO dto) {
 		Optional<Usuario> usuario = uService.obterPorId(dto.getIdUsuario());
 		if(!usuario.isPresent()) {
 			return ResponseEntity.badRequest().body("Faltou enviar o Usuário");
@@ -88,7 +86,7 @@ public class ClienteController {
 	
 	@PostMapping()
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity salvar(@Valid @RequestBody ClienteDTO dto) {
+	public ResponseEntity salvar(@RequestBody ClienteDTO dto) {
 		try {
 			Optional<Usuario> usuario = uService.obterPorId(dto.getIdUsuario());
 			if(!usuario.isPresent()) {

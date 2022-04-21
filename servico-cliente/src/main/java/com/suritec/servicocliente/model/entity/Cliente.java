@@ -29,7 +29,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "cliente", schema= "clientes")
+@Table(name = "cliente")
 @Data
 @Builder
 @NoArgsConstructor
@@ -44,11 +44,11 @@ public class Cliente {
 	private Endereco endereco;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "cliente_telefone", schema = "clientes", joinColumns = {@JoinColumn(name = "cliente_id")}, inverseJoinColumns = {@JoinColumn(name = "telefone_id")})
+	@JoinTable(name = "cliente_telefone", joinColumns = {@JoinColumn(name = "cliente_id")}, inverseJoinColumns = {@JoinColumn(name = "telefone_id")})
 	private Set<Telefone> telefone;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "cliente_email", schema = "clientes" , joinColumns = {@JoinColumn(name = "cliente_id")}, inverseJoinColumns = {@JoinColumn(name = "email_id")})
+	@JoinTable(name = "cliente_email", joinColumns = {@JoinColumn(name = "cliente_id")}, inverseJoinColumns = {@JoinColumn(name = "email_id")})
 	private Set<Email> email;
 	
 	@Column(name = "data_cadastro") @Convert(converter = Jsr310JpaConverters.LocalDateConverter.class) private LocalDate dataCadastro;

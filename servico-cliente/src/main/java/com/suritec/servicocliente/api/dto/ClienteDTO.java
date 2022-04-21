@@ -21,7 +21,7 @@ public class ClienteDTO {
 	private Long id;
 	@NotNull @Size(min = 3, max = 100) private String nome;
 	@NotNull @CPF private String cpf; 
-	@NotNull private EnderecoDTO endereco;
+	@NotEmpty private EnderecoDTO endereco;
 	@NotEmpty private List<TelefoneDTO> telefone;
 	@NotEmpty private List<EmailDTO> email;
 	private Long idUsuario;
